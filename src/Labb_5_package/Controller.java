@@ -143,6 +143,7 @@ public class Controller extends JPanel implements ActionListener, HyperlinkListe
     public void actionPerformed(ActionEvent e){
         if(!isConnectedToInternet()) {
             JOptionPane.showMessageDialog(this, "No internet connection");
+            return;
         }
         if (e.getSource() == textField) {
             try {
@@ -182,6 +183,7 @@ public class Controller extends JPanel implements ActionListener, HyperlinkListe
         if(e.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
             if(!isConnectedToInternet()) {
                 JOptionPane.showMessageDialog(this,"No internet connection");
+                return;
             }
             URL hyperURL = e.getURL();
             setEditorWebPage(hyperURL);
