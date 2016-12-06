@@ -64,7 +64,6 @@ public class Controller extends JPanel implements ActionListener, HyperlinkListe
         add(textField);
         add(editorScrollPane);
 
-
     }
 
     public void setEditorWebPage(URL textURL) {
@@ -109,10 +108,15 @@ public class Controller extends JPanel implements ActionListener, HyperlinkListe
         JButton okButton = new JButton("Välj");
         okButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                URL newURL = (URL)list.getSelectedValue();
-                setEditorWebPage(newURL);
-                model.moveToNewPage(newURL);
-                updateFwBwButtons();
+                if (list.getSelectedValue()==null) {
+                    JOptionPane.showMessageDialog(listFrame, "Välj ett av alternativen");
+                } else {
+                    URL newURL = (URL)list.getSelectedValue();
+                    setEditorWebPage(newURL);
+                    model.moveToNewPage(newURL);
+                    updateFwBwButtons();
+                }
+
             }
         });
         listFrame.add(okButton);
